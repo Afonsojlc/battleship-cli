@@ -1,45 +1,131 @@
-# battleship-python
-A terminal-based Battleship game built with Python. CS101 Portfolio Project.
+﻿# 🚢 Battleship CLI
 
-# 🚢 Battleship in Python
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white)
+![Tests](https://img.shields.io/badge/tests-7%20passed-brightgreen)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Architecture](https://img.shields.io/badge/OOP-Clean%20Architecture-orange)
 
-Welcome to my portfolio project! This is a recreation of the classic board game **Battleship**, played entirely in the command line (terminal).
+A clean, terminal-based recreation of the classic naval strategy game **Battleship**, built with Python and Object-Oriented Programming (OOP).
 
-The goal is simple: find and sink all the computer's hidden ships before you run out of attempts!
+The player takes command of a naval radar system to locate and sink all hidden enemy ships across uncharted waters before running out of attempts.
 
-## 🎮 Features
-* **Dynamic Grid:** The board is generated using 2D lists in Python.
-* **Randomized Ships:** Ships are positioned randomly at the start of every new game.
-* **Input Validation:** The game prevents crashes by handling invalid inputs (e.g., letters instead of numbers) or out-of-bounds coordinates.
-* **Visual Feedback:** The board updates after every move ('X' for a hit, '#' for a miss).
+---
 
-## 🛠️ Technologies Used
-* **Python 3**: Main game logic.
-* **Lists & Loops**: To manage the grid state and game turns.
-* **OOP (Object-Oriented Programming)**: The game is structured using Classes (e.g., `Board`) to keep the code organized.
-* **Random Module**: For random ship placement.
+## 🎮 Gameplay Preview
 
-## 🚀 How to Play
-Make sure you have Python 3 installed on your computer.
+```text
+=============================================
+        🚢 BATTLESHIP CLI GAME 🚢        
+=============================================
+Locate and sink all hidden enemy ships!
+Legend: [O] Unexplored Sea | [X] Ship Sunk | [#] Missed Shot | [S] Revealed Ship
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/Afonsojlc/battleship-python.git
-   ```
+  0 1 2 3 4
+0 O O # O O
+1 O X O O O
+2 O O O # O
+3 O O O O O
+4 O # O O X
 
-2. Enter the project folder:
-    ```bash
-    cd battleship-python
-    ```
+Attempts remaining: 6
+Enemy ships remaining: 1
+Select ROW (0-4): 
+```
 
-3. Run the game:
-    ```bash
-    python3 code.py
-    ```
+---
+
+## ✨ Key Features
+
+* **Clean OOP Architecture:** Fully encapsulated `Board` class managing the grid state, coordinate tracking, and game rules.
+* **Smart Input Validation:** Catches non-numeric entries (`try/except ValueError`) and validates boundaries (`0 <= coord < size`).
+* **Non-Punitive Retries:** Invalid inputs, out-of-bounds coordinates, or repeated shots alert the player without wasting attempts.
+* **Dynamic Grid Scaling:** Flexible board size and ship count parameters (defaults to 5x5 grid with 3 hidden ships).
+* **End-Game Ship Reveal:** On game over, the board displays the exact positions where the remaining enemy fleet was hiding (`S`).
+* **Automated Unit Testing:** Includes a full suite of unit tests with Python's built-in `unittest` framework.
+
+---
+
+## 🛠️ Tech Stack & Concepts
+
+* **Language:** Python 3.10+ (Standard Library only - zero external dependencies)
+* **Design Patterns:** Object-Oriented Programming (Encapsulation, State Management)
+* **Testing:** `unittest` framework covering bounds, duplicate shots, hits/misses, and win conditions
+* **Code Style:** PEP 8 compliance with type hinting (`typing.List`, `typing.Set`, `typing.Tuple`)
+
+---
+
+## 📁 Project Structure
+
+```text
+battleship-cli/
+├── tests/
+│   ├── __init__.py
+│   └── test_board.py      # Automated unit test suite
+├── .gitignore             # Python environment and cache ignores
+├── battleship.py          # Core Board class and CLI game loop
+└── README.md              # Project documentation
+```
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+Make sure you have **Python 3.10+** installed on your system.
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/Afonsojlc/battleship-cli.git
+cd battleship-cli
+```
+
+### 2. Run the game
+```bash
+python battleship.py
+```
+
+---
+
+## 🧪 Running Unit Tests
+
+The test suite validates board dimensions, ship collision prevention, coordinate bounds, duplicate guesses, and state transitions:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+Output:
+```text
+test_board_initialization ... ok
+test_miss_shot ... ok
+test_out_of_bounds_guess ... ok
+test_repeated_guess ... ok
+test_reveal_ships_display ... ok
+test_ships_within_bounds ... ok
+test_successful_hit ... ok
+
+Ran 7 tests in 0.001s
+OK
+```
+
+---
 
 ## 🧠 Challenges & Learnings
-This project was developed as part of Codecademy's CS101: Introduction to Programming course.
 
-The biggest challenge was creating the logic to prevent overlapping ships (ensuring two ships don't occupy the same spot) and managing the coordinate system (row/column) in a user-friendly way. Additionally, applying Class and Instance concepts in a real-world scenario helped consolidate my OOP knowledge.
+* **Collision-Free Placement:** Used Python `set` data structures to ensure generated ship coordinates never overlap ($O(1)$ lookup time).
+* **Decoupled Game Logic:** Separated board state transitions from presentation messages, allowing robust testability and clean CLI rendering.
+* **Defensive Error Handling:** Ensured resilient gameplay that gracefully guides the user through invalid inputs without crashing.
 
-Author: Afonso Carvalho 
+---
+
+## 👤 Author
+
+**Afonso Carvalho**  
+* GitHub: [@Afonsojlc](https://github.com/Afonsojlc)
+* LinkedIn: [Afonso Carvalho](https://www.linkedin.com/in/afonso-carvalho-64796328a/)
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
