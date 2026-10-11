@@ -4,9 +4,7 @@
 ![Tests](https://img.shields.io/badge/tests-7%20passed-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-A terminal-based recreation of the classic naval game **Battleship**, built with Python using Object-Oriented Programming (OOP).
-
-The player guesses grid coordinates to find and sink all hidden ships before running out of attempts.
+> A terminal-based recreation of the classic naval game **Battleship**, built with Python using Object-Oriented Programming (OOP). The player guesses grid coordinates to find and sink all hidden ships before running out of attempts.
 
 ---
 
